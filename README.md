@@ -22,13 +22,7 @@ A sophisticated, fully responsive landing page designed for a high-end legal pra
 - **Google Fonts** (Noto Serif for headings, Work Sans for body)
 - **Material Symbols** (Minimalist iconography)
 
-## 🚀 Improvements Made
 
-As part of the **FRANKSTACK** optimization process, I implemented:
-1. **Fluid Grid Systems:** Converted static containers into responsive flex/grid layouts.
-2. **Accessibility (a11y):** Added ARIA labels and keyboard-friendly navigation.
-3. **Scroll Logic:** Custom JavaScript for "Back to Top" visibility and scroll-reveal triggers.
-4. **UX Enhancements:** Touch-friendly button targets and refined padding for mobile users.
 
 ## 📂 Installation
 
