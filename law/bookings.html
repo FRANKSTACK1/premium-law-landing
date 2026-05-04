@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Book a Consultation | Sir Stanleys Law Firm</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&family=Work+Sans:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#775a19",
+                        "on-primary-container": "#8192a7",
+                        "surface-variant": "#e1e3e4",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#f0f1f2",
+                        "tertiary": "#151516",
+                        "on-secondary-container": "#785a1a",
+                        "inverse-primary": "#b7c8de",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#fed488",
+                        "error": "#ba1a1a",
+                        "on-surface": "#191c1d",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#261900",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "outline": "#74777d",
+                        "background": "#f8f9fa",
+                        "tertiary-container": "#2a2a2a",
+                        "on-background": "#191c1d",
+                        "primary-fixed": "#d2e4fb",
+                        "on-primary-fixed": "#0b1d2d",
+                        "surface-container-high": "#e7e8e9",
+                        "surface-container-low": "#f3f4f5",
+                        "surface-tint": "#4f6073",
+                        "surface-container": "#edeeef",
+                        "on-tertiary-container": "#929190",
+                        "surface": "#f8f9fa",
+                        "secondary-fixed-dim": "#e9c176",
+                        "surface-dim": "#d9dadb",
+                        "secondary-fixed": "#ffdea5",
+                        "outline-variant": "#c4c6cd",
+                        "surface-bright": "#f8f9fa",
+                        "on-primary-fixed-variant": "#38485a",
+                        "tertiary-fixed": "#e4e2e1",
+                        "primary-container": "#1a2b3c",
+                        "tertiary-fixed-dim": "#c8c6c6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "48px",
+                        "stack-md": "16px",
+                        "section-padding": "80px",
+                        "stack-sm": "8px",
+                        "gutter": "24px",
+                        "margin": "32px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Work Sans"],
+                        "headline-lg": ["Noto Serif"],
+                        "body-md": ["Work Sans"],
+                        "display-lg": ["Noto Serif"],
+                        "body-lg": ["Work Sans"],
+                        "headline-md": ["Noto Serif"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Modern Enhancements */
+        header { transition: all 0.3s ease; }
+        header.scrolled {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Menu */
+        #mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Image Zoom */
+        .zoom-container img {
+            transition: transform 1.2s ease;
+        }
+        .zoom-container:hover img {
+            transform: scale(1.05);
+        }
+
+        html { scroll-behavior: smooth; }
+        body { overflow-x: hidden; width: 100%; }
+        
+        @media (max-width: 640px) {
+            .font-display-lg { font-size: 32px !important; }
+            .font-body-lg { font-size: 16px !important; }
+            .py-section-padding { padding-top: 48px; padding-bottom: 48px; }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+
+<!-- TopAppBar -->
+<header id="main-nav" class="bg-white/95 backdrop-blur-md text-slate-900 font-serif text-lg tracking-tight top-0 sticky border-b border-slate-200 shadow-sm z-50">
+    <div class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
+        <div class="flex items-center gap-3 cursor-pointer active:opacity-80 transition-all">
+            <span class="material-symbols-outlined text-secondary" data-icon="gavel">gavel</span>
+            <span class="text-lg md:text-xl font-serif font-bold uppercase tracking-widest text-slate-900 leading-tight">Sir Stanleys</span>
+        </div>
+        
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center gap-8">
+            <a class="text-slate-600 font-medium hover:text-slate-900 transition-colors duration-300" href="index.html">Home</a>
+            <a class="text-slate-600 font-medium hover:text-slate-900 transition-colors duration-300" href="practice-areas.html">Practice Areas</a>
+            <a class="text-amber-600 font-semibold border-b-2 border-amber-600" href="bookings.html">Consultation</a>
+            <a class="text-slate-600 font-medium hover:text-slate-900 transition-colors duration-300" href="attorneys.html">Attorneys</a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+            <a href="bookings.html" class="hidden lg:block bg-primary text-white px-6 py-2.5 font-label-caps text-label-caps hover:brightness-110 transition-all border-b border-secondary active:scale-95">
+                Book Consultation
+            </a>
+            <!-- Hamburger -->
+            <button id="menu-open" class="md:hidden p-2 text-primary focus:outline-none" aria-label="Open Menu">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Mobile Menu Sidebar -->
+<div id="overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60] hidden opacity-0 transition-opacity duration-300"></div>
+<aside id="mobile-menu" class="fixed top-0 right-0 h-full w-[85%] max-w-sm bg-white z-[70] p-8 shadow-2xl flex flex-col">
+    <button id="menu-close" class="self-end mb-8 text-primary" aria-label="Close Menu">
+        <span class="material-symbols-outlined text-3xl">close</span>
+    </button>
+    <nav class="flex flex-col gap-6 text-xl font-serif">
+        <a class="mobile-nav-link border-b border-slate-100 pb-4 text-slate-900" href="index.html">Home</a>
+        <a class="mobile-nav-link border-b border-slate-100 pb-4 text-slate-900" href="about.html">About</a>
+        <a class="mobile-nav-link border-b border-slate-100 pb-4 text-amber-600 font-bold" href="bookings.html">Book Consultation</a>
+        <a class="mobile-nav-link border-b border-slate-100 pb-4 text-slate-900" href="attorneys.html">Attorneys</a>
+        
+    </nav>
+</aside>
+
+<main class="min-h-screen">
+    <!-- Hero Section -->
+    <section class="relative py-section-padding bg-primary text-white overflow-hidden zoom-container">
+        <div class="absolute inset-0 opacity-20">
+            <img alt="Legal Office" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAndi5Mz5As6wNmVI0gi-uLFjC3EGr7WuAzxc-yUJ5m-QouiegygLgG3S6bv3f95cSWBecKjeMkOO3P0UTEGIETGWqQCYiBHy6z3e6jsEQNzqt0MY_t5cGqneNkFwzx0H40Ea0kyY0OIrI9EFbOEDiKYH9fi78rtTabrDwGBCowb_P-s2uJ5rkqeAI65rVGijwXpd5Du1pR_dHivxNdxnxL6ahVgIUbIN-JjofqyE7VuKTNp8L2ZQ7s1DaRM2FSlz9o2Bbjk5hQd7M"/>
+        </div>
+        <div class="relative max-w-container-max mx-auto px-6 md:px-margin text-center reveal active">
+            <span class="font-label-caps text-label-caps text-secondary-fixed mb-stack-sm block">SCHEDULE A SESSION</span>
+            <h1 class="font-display-lg text-3xl md:text-display-lg mb-stack-md leading-tight">Reserved Legal Counsel</h1>
+            <p class="font-body-lg text-base md:text-body-lg text-on-primary-container max-w-2xl mx-auto opacity-90">
+                Secure your consultation with our senior partners. Our commitment to absolute precision begins with understanding your unique case details.
+            </p>
+        </div>
+    </section>
+
+    <!-- Booking Form Section -->
+    <section class="py-section-padding bg-background">
+        <div class="max-w-4xl mx-auto px-6 md:px-margin">
+            <div class="bg-white p-6 md:p-12 border border-outline-variant shadow-sm relative reveal">
+                <div class="absolute top-0 right-0 w-12 h-12 md:w-24 md:h-24 border-t-2 border-r-2 border-secondary/20 -m-[1px]"></div>
+                <form action="#" class="space-y-6 md:space-y-stack-lg">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+                        <div class="space-y-2">
+                            <label class="font-label-caps text-[11px] text-on-surface-variant">FULL NAME</label>
+                            <input class="w-full bg-transparent border-0 border-b border-outline-variant py-3 px-0 font-body-md focus:ring-0 focus:border-secondary transition-colors" placeholder="e.g. Julian Montgomery" type="text"/>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="font-label-caps text-[11px] text-on-surface-variant">EMAIL ADDRESS</label>
+                            <input class="w-full bg-transparent border-0 border-b border-outline-variant py-3 px-0 font-body-md focus:ring-0 focus:border-secondary transition-colors" placeholder="julian.m@corporate.com" type="email"/>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+                        <div class="space-y-2">
+                            <label class="font-label-caps text-[11px] text-on-surface-variant">PHONE NUMBER</label>
+                            <input class="w-full bg-transparent border-0 border-b border-outline-variant py-3 px-0 font-body-md focus:ring-0 focus:border-secondary transition-colors" placeholder="+1 (555) 000-0000" type="tel"/>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="font-label-caps text-[11px] text-on-surface-variant">PRACTICE AREA</label>
+                            <select class="w-full bg-transparent border-0 border-b border-outline-variant py-3 px-0 font-body-md focus:ring-0 focus:border-secondary transition-colors appearance-none">
+                                <option>Corporate Litigation</option>
+                                <option>Mergers & Acquisitions</option>
+                                <option>Intellectual Property</option>
+                                <option>Estate Planning</option>
+                                <option>International Trade</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+                        <div class="space-y-2">
+                            <label class="font-label-caps text-[11px] text-on-surface-variant">PREFERRED DATE</label>
+                            <input class="w-full bg-transparent border-0 border-b border-outline-variant py-3 px-0 font-body-md focus:ring-0 focus:border-secondary transition-colors" type="date"/>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="font-label-caps text-[11px] text-on-surface-variant">PREFERRED TIME</label>
+                            <select class="w-full bg-transparent border-0 border-b border-outline-variant py-3 px-0 font-body-md focus:ring-0 focus:border-secondary transition-colors appearance-none">
+                                <option>Morning (09:00 - 12:00)</option>
+                                <option>Afternoon (13:00 - 17:00)</option>
+                                <option>Evening (By Special Request)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="font-label-caps text-[11px] text-on-surface-variant">INITIAL CASE NOTES</label>
+                        <textarea class="w-full bg-transparent border-0 border-b border-outline-variant py-3 px-0 font-body-md focus:ring-0 focus:border-secondary transition-colors resize-none" placeholder="Briefly describe the nature of your inquiry..." rows="4"></textarea>
+                    </div>
+                    <div class="pt-4">
+                        <button class="w-full bg-primary text-white py-5 font-label-caps text-label-caps tracking-widest hover:bg-secondary transition-all flex items-center justify-center gap-3 active:scale-[0.98]" type="submit">
+                            CONFIRM APPOINTMENT REQUEST
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </button>
+                        <p class="text-center mt-6 text-on-surface-variant text-[11px] font-body-md uppercase tracking-tight">
+                            All information provided is protected under attorney-client privilege.
+                        </p>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Firm Details -->
+            <div class="mt-stack-lg grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-gutter text-center border-t border-outline-variant pt-stack-lg">
+                <div class="p-4 reveal">
+                    <span class="material-symbols-outlined text-secondary text-3xl mb-stack-sm">location_on</span>
+                    <h4 class="font-headline-md text-xl md:text-headline-md text-primary mb-2">Headquarters</h4>
+                    <p class="text-on-surface-variant font-body-md text-sm md:text-base">100 Wall Street, Level 42<br/>New York, NY 10005</p>
+                </div>
+                <div class="p-4 reveal">
+                    <span class="material-symbols-outlined text-secondary text-3xl mb-stack-sm">call</span>
+                    <h4 class="font-headline-md text-xl md:text-headline-md text-primary mb-2">Direct Line</h4>
+                    <p class="text-on-surface-variant font-body-md text-sm md:text-base">+1 (212) 555-8000<br/>Mon - Fri: 8am - 8pm</p>
+                </div>
+                <div class="p-4 reveal">
+                    <span class="material-symbols-outlined text-secondary text-3xl mb-stack-sm">verified_user</span>
+                    <h4 class="font-headline-md text-xl md:text-headline-md text-primary mb-2">Confidentiality</h4>
+                    <p class="text-on-surface-variant font-body-md text-sm md:text-base">Encrypted communications<br/>GDPR & HIPAA Compliant</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Back to Top -->
+<button id="back-to-top" class="fixed bottom-6 right-6 bg-secondary text-white p-3 rounded-full shadow-2xl opacity-0 translate-y-10 transition-all duration-300 z-40 hover:bg-primary active:scale-90" aria-label="Back to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+</button>
+
+<!-- Footer -->
+<footer class="bg-slate-950 text-slate-300 font-sans text-sm leading-relaxed w-full pt-16 pb-8 border-t border-amber-900/30">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 px-8 max-w-7xl mx-auto">
+        <div class="reveal">
+            <div class="text-2xl font-serif text-white tracking-tighter mb-6">Sir Stanleys</div>
+            <p class="text-slate-400">Defining the standard of legal excellence for over four decades through heritage, authority, and absolute precision.</p>
+        </div>
+        <div class="reveal">
+            <h5 class="text-white font-label-caps text-label-caps mb-6">PRACTICE AREAS</h5>
+            <ul class="space-y-3">
+                <li><a class="text-slate-400 hover:text-white transition-colors underline-offset-4 hover:underline" href="#">Corporate Law</a></li>
+                <li><a class="text-slate-400 hover:text-white transition-colors underline-offset-4 hover:underline" href="#">International Arbitration</a></li>
+                <li><a class="text-slate-400 hover:text-white transition-colors underline-offset-4 hover:underline" href="#">Intellectual Property</a></li>
+                <li><a class="text-slate-400 hover:text-white transition-colors underline-offset-4 hover:underline" href="#">Tax Litigation</a></li>
+            </ul>
+        </div>
+        <div class="reveal">
+            <h5 class="text-white font-label-caps text-label-caps mb-6">RESOURCES</h5>
+            <ul class="space-y-3">
+                <li><a class="text-slate-400 hover:text-white transition-colors underline-offset-4 hover:underline" href="#">Legal Blog</a></li>
+                <li><a class="text-slate-400 hover:text-white transition-colors underline-offset-4 hover:underline" href="#">Case Results</a></li>
+                <li><a class="text-slate-400 hover:text-white transition-colors underline-offset-4 hover:underline" href="#">Firm History</a></li>
+            </ul>
+        </div>
+        <div class="reveal">
+            <h5 class="text-white font-label-caps text-label-caps mb-6">CONTACT</h5>
+            <p class="text-slate-400 mb-4">concierge@sirstanleys.com</p>
+            <div class="flex gap-4">
+                <span class="material-symbols-outlined text-slate-400 hover:text-amber-400 cursor-pointer">share</span>
+                <span class="material-symbols-outlined text-slate-400 hover:text-amber-400 cursor-pointer">public</span>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-8 mt-16 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-6">
+        <p class="text-slate-500 text-xs text-center md:text-left">© 2024 Sir Stanleys Law Firm. All rights reserved.</p>
+        <div class="flex flex-wrap justify-center gap-6 text-xs font-label-caps">
+            <a class="text-slate-400 hover:text-white transition-colors" href="#">Privacy Policy</a>
+            <a class="text-slate-400 hover:text-white transition-colors" href="#">Terms</a>
+            <a class="text-slate-400 hover:text-white transition-colors" href="#">Disclaimer</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const nav = document.getElementById('main-nav');
+        const menuOpen = document.getElementById('menu-open');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('overlay');
+        const backToTop = document.getElementById('back-to-top');
+        const reveals = document.querySelectorAll('.reveal');
+
+        // Navbar Scroll Behavior
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                nav.classList.add('scrolled');
+                backToTop.classList.remove('opacity-0', 'translate-y-10');
+            } else {
+                nav.classList.remove('scrolled');
+                backToTop.classList.add('opacity-0', 'translate-y-10');
+            }
+            handleReveal();
+        });
+
+        // Scroll Reveal logic
+        function handleReveal() {
+            reveals.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const isVisible = (rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85);
+                if (isVisible) el.classList.add('active');
+            });
+        }
+
+        // Mobile Menu Toggle
+        const toggleMenu = (isOpen) => {
+            if (isOpen) {
+                overlay.classList.remove('hidden');
+                setTimeout(() => {
+                    overlay.classList.add('opacity-100');
+                    mobileMenu.classList.add('open');
+                }, 10);
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.remove('open');
+                overlay.classList.remove('opacity-100');
+                setTimeout(() => {
+                    overlay.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }, 400);
+            }
+        };
+
+        menuOpen.addEventListener('click', () => toggleMenu(true));
+        menuClose.addEventListener('click', () => toggleMenu(false));
+        overlay.addEventListener('click', () => toggleMenu(false));
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => toggleMenu(false));
+        });
+
+        // Back to top
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Initial check
+        handleReveal();
+    });
+</script>
+</body>
+</html>

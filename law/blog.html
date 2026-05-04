@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Legal Insights | Sir Stanleys Law Firm</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom Scrollbar for Premium Feel */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f8f9fa; }
+        ::-webkit-scrollbar-thumb { background: #041627; }
+
+        /* Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Menu Transitions */
+        #mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Navbar Shrink */
+        header.shrunk {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Prevent Horizontal Overflow */
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            min-height: 100dvh;
+        }
+
+        html { scroll-behavior: smooth; }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#775a19",
+                        "on-primary-container": "#8192a7",
+                        "surface-variant": "#e1e3e4",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#f0f1f2",
+                        "tertiary": "#151516",
+                        "on-secondary-container": "#785a1a",
+                        "inverse-primary": "#b7c8de",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#fed488",
+                        "error": "#ba1a1a",
+                        "on-surface": "#191c1d",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#261900",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "outline": "#74777d",
+                        "background": "#f8f9fa",
+                        "tertiary-container": "#2a2a2a",
+                        "on-background": "#191c1d",
+                        "primary-fixed": "#d2e4fb",
+                        "on-primary-fixed": "#0b1d2d",
+                        "surface-container-high": "#e7e8e9",
+                        "surface-container-low": "#f3f4f5",
+                        "surface-tint": "#4f6073",
+                        "surface-container": "#edeeef",
+                        "on-tertiary-container": "#929190",
+                        "surface": "#f8f9fa",
+                        "secondary-fixed-dim": "#e9c176",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-secondary": "#ffffff",
+                        "primary": "#041627",
+                        "on-surface-variant": "#44474c",
+                        "primary-fixed-dim": "#b7c8de",
+                        "surface-dim": "#d9dadb",
+                        "secondary-fixed": "#ffdea5",
+                        "outline-variant": "#c4c6cd",
+                        "surface-bright": "#f8f9fa",
+                        "on-primary-fixed-variant": "#38485a",
+                        "tertiary-fixed": "#e4e2e1",
+                        "primary-container": "#1a2b3c",
+                        "tertiary-fixed-dim": "#c8c6c6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "48px",
+                        "stack-md": "16px",
+                        "section-padding": "80px",
+                        "stack-sm": "8px",
+                        "gutter": "24px",
+                        "margin": "32px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Work Sans"],
+                        "headline-lg": ["Noto Serif"],
+                        "body-md": ["Work Sans"],
+                        "display-lg": ["Noto Serif"],
+                        "body-lg": ["Work Sans"],
+                        "headline-md": ["Noto Serif"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md">
+
+<!-- TopAppBar -->
+<header id="main-header" class="bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm sticky top-0 z-50 transition-all duration-300">
+    <div class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
+        <div class="flex items-center gap-3 cursor-pointer active:opacity-80 transition-all">
+            <span class="material-symbols-outlined text-amber-700" data-icon="gavel">gavel</span>
+            <span class="text-lg md:text-xl font-serif font-bold uppercase tracking-widest text-slate-900 dark:text-slate-100">Sir Stanleys</span>
+        </div>
+        
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center gap-8">
+            <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 transition-colors duration-300" href="index.html">Home</a>
+            <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 transition-colors duration-300" href="practice-areas.html">Practice Areas</a>
+            <a class="text-amber-600 dark:text-amber-500 font-semibold border-b-2 border-amber-600 transition-colors duration-300" href="blog.html">Blog</a>
+            <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 transition-colors duration-300" href="contact.html">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+            <a href="bookings.html" class="hidden lg:block bg-primary text-on-primary px-6 py-2.5 font-label-caps text-label-caps hover:brightness-110 transition-all active:scale-95">
+                Book Consultation
+            </a>
+            <!-- Hamburger Button -->
+            <button id="menu-toggle" class="md:hidden text-primary dark:text-white p-2 focus:outline-none" aria-label="Toggle Menu">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Mobile Menu Overlay -->
+<div id="menu-overlay" class="fixed inset-0 bg-black/50 z-[60] hidden backdrop-blur-sm transition-opacity duration-300 opacity-0"></div>
+
+<!-- Slide-in Mobile Menu -->
+<aside id="mobile-menu" class="fixed top-0 right-0 h-full w-[80%] max-w-sm bg-white dark:bg-slate-950 z-[70] p-8 shadow-2xl flex flex-col">
+    <button id="menu-close" class="self-end mb-8 text-primary dark:text-white">
+        <span class="material-symbols-outlined text-3xl">close</span>
+    </button>
+    <nav class="flex flex-col gap-6 text-xl font-serif">
+        <a class="mobile-link py-2 border-b border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white" href="index.html">Home</a>
+        <a class="mobile-link py-2 border-b border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white" href="about.html">About</a>
+        <a class="mobile-link py-2 border-b border-slate-100 dark:border-slate-800 text-amber-600" href="blog.html">Blog</a>
+        <a class="mobile-link py-2 border-b border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white" href="attorneys.html">Attorneys</a>
+        <a href="bookings.html" class="mt-4 bg-primary text-on-primary w-full py-4 font-label-caps tracking-widest">Book Consultation</a>
+    </nav>
+</aside>
+
+<main class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+    <!-- Hero Section -->
+    <section class="reveal mb-stack-lg">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            <div class="lg:col-span-8 relative overflow-hidden group min-h-[400px]">
+                <img alt="Featured Legal Article" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6wJCjrHZ5Lm1TGhfN0eQYPmdie3eSFpAhiB9zd8PZAqjikghfhZmWsEAXkVUw_KdhM3bT-JFwEYc82t8qsSZBV6TDYaT-d-EKpj4FzBkdjUY0g1dO_evcpRT1k-AxVpGHfikJabNgo-BZ_779sf7aTlI5KftKA70RaW7buz5mA-Z4RLpdTvQSGrkkEGJlHkJnTk9k1wMzcBJyCOhL_FlrSYNW8jIVtNzxzD4uzaX-n230rIWxUmIYlRbAQtmS9zcUJaT4UxJQ4dI"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/40 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-6 md:p-12 w-full">
+                    <span class="inline-block bg-secondary text-white px-3 py-1 font-label-caps text-[10px] mb-4">FEATURED INSIGHT</span>
+                    <h1 class="font-display-lg text-2xl md:text-4xl lg:text-display-lg text-white mb-4 max-w-2xl leading-tight">The Evolving Landscape of International Corporate Arbitration in 2024</h1>
+                    <p class="hidden md:block text-slate-200 font-body-lg text-body-lg mb-6 max-w-xl line-clamp-2">Our senior partners analyze recent shifts in jurisdictional authority and how multinational firms are mitigating litigation risks.</p>
+                    <a class="inline-flex items-center text-white font-label-caps text-label-caps border-b border-white pb-1 hover:text-secondary hover:border-secondary transition-all" href="#">
+                        READ FULL ARTICLE <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+            <div class="lg:col-span-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 flex flex-col justify-center">
+                <h2 class="font-headline-md text-headline-md text-primary dark:text-white mb-6">Stay Informed</h2>
+                <p class="text-on-surface-variant dark:text-slate-400 font-body-md mb-8">Receive high-stakes legal updates and industry intelligence directly to your inbox.</p>
+                <form class="space-y-4">
+                    <input class="w-full border-b border-slate-300 dark:border-slate-700 focus:border-secondary focus:ring-0 px-0 py-3 bg-transparent outline-none transition-all font-body-md text-primary dark:text-white" placeholder="Email Address" type="email"/>
+                    <button class="w-full bg-primary text-on-primary py-4 font-label-caps text-label-caps hover:bg-secondary transition-colors active:scale-95">
+                        SUBSCRIBE TO UPDATES
+                    </button>
+                </form>
+                <p class="text-[10px] text-slate-400 mt-6 font-label-caps text-center uppercase tracking-tighter">Privacy Assured • No Spam Policy</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters and Search -->
+    <section class="reveal flex flex-col md:flex-row justify-between items-center gap-6 mb-stack-md border-b border-slate-200 dark:border-slate-800 pb-8">
+        <div class="flex flex-wrap gap-2 justify-center md:justify-start">
+            <button class="px-4 md:px-6 py-2 bg-primary text-on-primary font-label-caps text-[11px] md:text-label-caps">ALL ARTICLES</button>
+            <button class="px-4 md:px-6 py-2 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 font-label-caps text-[11px] md:text-label-caps hover:bg-slate-50 transition-colors">CORPORATE LAW</button>
+            <button class="hidden sm:block px-6 py-2 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 font-label-caps text-label-caps hover:bg-slate-50 transition-colors">LITIGATION</button>
+        </div>
+        <div class="relative w-full md:w-80">
+            <input class="w-full pl-10 pr-4 py-3 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:border-secondary outline-none transition-all" placeholder="Search insights..." type="text"/>
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+        </div>
+    </section>
+
+    <!-- Articles Feed -->
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-gutter gap-y-12">
+        <!-- Article 1 -->
+        <article class="reveal flex flex-col bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:shadow-xl transition-all group">
+            <div class="overflow-hidden aspect-[16/10]">
+                <img alt="IP" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt4SyX2-GjSZGrTi64QgRM6OUcP1kV0ZVx-vxc6eOcYgVrbfvsiD_P3DUoYoNLeQcI5aFoa6Db7zMyYZ4xqmWqYlfXCYXwOUOTPUkEeray7Q0FBOMcPdKlVwfDIlo9Z0JSvr_6cfaQypHHunMyr7ncsPVa7gNWgFMiyQlujiZzSx1lgMEUn-6CaERA9nl6w9JzREznVEO5TmLOldJTzy6yzFsbhFtBC1CRcvMLb2oFUv6txgh8QFxSlt0c_sy0DFegsSsx7eibFhQ"/>
+            </div>
+            <div class="p-6 md:p-8 flex flex-col flex-grow">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="text-secondary font-label-caps text-[10px] tracking-widest">INTELLECTUAL PROPERTY</span>
+                    <span class="text-slate-400 font-label-caps text-[10px]">MAR 12, 2024</span>
+                </div>
+                <h3 class="font-headline-md text-xl text-primary dark:text-white mb-4 group-hover:text-secondary transition-colors leading-snug">Digital Assets and Estate Planning: A New Frontier</h3>
+                <p class="text-on-surface-variant dark:text-slate-400 font-body-md text-sm mb-6 line-clamp-3">Navigating the complexities of digital inheritance requires a sophisticated approach to data privacy.</p>
+                <div class="mt-auto">
+                    <a class="inline-flex items-center text-primary dark:text-white font-label-caps text-label-caps border-b border-primary/20 pb-1 hover:border-secondary transition-all" href="#">
+                        READ ARTICLE <span class="material-symbols-outlined ml-2 text-sm">chevron_right</span>
+                    </a>
+                </div>
+            </div>
+        </article>
+        <!-- Article 2 -->
+        <article class="reveal flex flex-col bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:shadow-xl transition-all group">
+            <div class="overflow-hidden aspect-[16/10]">
+                <img alt="Litigation" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB85Anp1gy4D38Y7dN-qgMUtApkBAHHwXNLf7FO4JMg9c-Zp8nieNqaFlKfpReKusv3dZHl6WzSuYdHyosMRQlXyfjibkrI4iSfhyitcMk0l6Fy3uNC6pOQ6PwFPF56q9ZWB5P2h5v2gJfmH6RNYo12x2_BR4D2Kp5tJl2taPaCmnsLNASPKBEN8Ap_TYvkUbgloVym567H4f2kdU5w7w-qmTgj9cuqz4o3eZFbKVFqSksH7-6bC4O65YcV4gqN0oo1mzQeTq9w-Vg"/>
+            </div>
+            <div class="p-6 md:p-8 flex flex-col flex-grow">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="text-secondary font-label-caps text-[10px] tracking-widest">CIVIL LITIGATION</span>
+                    <span class="text-slate-400 font-label-caps text-[10px]">MAR 08, 2024</span>
+                </div>
+                <h3 class="font-headline-md text-xl text-primary dark:text-white mb-4 group-hover:text-secondary transition-colors leading-snug">Strategic Advantages in Pre-Trial Negotiations</h3>
+                <p class="text-on-surface-variant dark:text-slate-400 font-body-md text-sm mb-6 line-clamp-3">How early-stage evidence disclosure can drastically shift settlement leverage.</p>
+                <div class="mt-auto">
+                    <a class="inline-flex items-center text-primary dark:text-white font-label-caps text-label-caps border-b border-primary/20 pb-1 hover:border-secondary transition-all" href="#">
+                        READ ARTICLE <span class="material-symbols-outlined ml-2 text-sm">chevron_right</span>
+                    </a>
+                </div>
+            </div>
+        </article>
+        <!-- Article 3 -->
+        <article class="reveal flex flex-col bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:shadow-xl transition-all group">
+            <div class="overflow-hidden aspect-[16/10]">
+                <img alt="ESG" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy4lHu2aJ2P0HyPmOhhJFE2z-QbNnGwVSNn5XdHathjtbB-4nvaq-mU3XhS8OGeG5jg9lpEy76YEkp8W_vL0YIgmdpsRmlbi6NBdk18GJfWHvungb0y_qf3NENjqc7eUUVBeKLaMdUG5nShU7CjdkYVXHk3yCDazVmgsb7n3yC84wunQuEY9mA0D3w6RjxJGjSNtudPFnDnOFF56g04Hctp_WTDKLC1wUyNEVtcou8XrhG7lIVrpE1CvImgWYq0JZgnH7cRv-Btww"/>
+            </div>
+            <div class="p-6 md:p-8 flex flex-col flex-grow">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="text-secondary font-label-caps text-[10px] tracking-widest">CORPORATE STRATEGY</span>
+                    <span class="text-slate-400 font-label-caps text-[10px]">FEB 24, 2024</span>
+                </div>
+                <h3 class="font-headline-md text-xl text-primary dark:text-white mb-4 group-hover:text-secondary transition-colors leading-snug">ESG Compliance: More Than Just a Trend</h3>
+                <p class="text-on-surface-variant dark:text-slate-400 font-body-md text-sm mb-6 line-clamp-3">Evaluating legal repercussions of non-compliance with emerging regulations.</p>
+                <div class="mt-auto">
+                    <a class="inline-flex items-center text-primary dark:text-white font-label-caps text-label-caps border-b border-primary/20 pb-1 hover:border-secondary transition-all" href="#">
+                        READ ARTICLE <span class="material-symbols-outlined ml-2 text-sm">chevron_right</span>
+                    </a>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- Pagination -->
+    <div class="reveal flex justify-center mt-stack-lg">
+        <nav class="flex items-center gap-1 md:gap-2">
+            <a class="w-10 h-10 flex items-center justify-center border border-slate-200 dark:border-slate-800 text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">chevron_left</span></a>
+            <a class="w-10 h-10 flex items-center justify-center bg-primary text-white font-label-caps" href="#">1</a>
+            <a class="w-10 h-10 flex items-center justify-center border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 font-label-caps hover:bg-slate-50" href="#">2</a>
+            <span class="mx-2 text-slate-400">...</span>
+            <a class="w-10 h-10 flex items-center justify-center border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 font-label-caps hover:bg-slate-50" href="#">12</a>
+            <a class="w-10 h-10 flex items-center justify-center border border-slate-200 dark:border-slate-800 text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">chevron_right</span></a>
+        </nav>
+    </div>
+</main>
+
+<!-- Back to Top -->
+<button id="back-to-top" class="fixed bottom-8 right-8 bg-secondary text-white p-3 rounded-full shadow-xl opacity-0 translate-y-10 transition-all duration-300 z-40 hover:bg-primary" aria-label="Back to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+</button>
+
+<!-- Footer -->
+<footer class="bg-slate-950 dark:bg-black text-slate-300 pt-16 pb-8 border-t border-amber-900/30 w-full overflow-hidden">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 px-8 max-w-7xl mx-auto mb-16">
+        <div class="reveal">
+            <span class="text-2xl font-serif text-white tracking-tighter block mb-6">Sir Stanleys</span>
+            <p class="text-sm leading-relaxed text-slate-400">Defining legal excellence through heritage, authority, and absolute precision since 1924.</p>
+        </div>
+        <div class="reveal">
+            <h4 class="text-white font-label-caps text-label-caps mb-6">PRACTICE AREAS</h4>
+            <ul class="space-y-3 text-sm">
+                <li><a class="text-slate-400 hover:text-white transition-colors" href="#">International Trade</a></li>
+                <li><a class="text-slate-400 hover:text-white transition-colors" href="#">Civil Litigation</a></li>
+                <li><a class="text-slate-400 hover:text-white transition-colors" href="#">Maritime Law</a></li>
+            </ul>
+        </div>
+        <div class="reveal">
+            <h4 class="text-white font-label-caps text-label-caps mb-6">RESOURCES</h4>
+            <ul class="space-y-3 text-sm">
+                <li><a class="text-amber-500 hover:brightness-110" href="#">Legal Blog</a></li>
+                <li><a class="text-slate-400 hover:text-white transition-colors" href="#">Case Studies</a></li>
+                <li><a class="text-slate-400 hover:text-white transition-colors" href="#">FAQ</a></li>
+            </ul>
+        </div>
+        <div class="reveal">
+            <h4 class="text-white font-label-caps text-label-caps mb-6">CONTACT</h4>
+            <p class="text-sm text-slate-400 mb-2">102 Fleet Street, London</p>
+            <p class="text-sm text-slate-400 mb-2">+44 (0) 20 7946 0124</p>
+            <p class="text-sm text-slate-400">office@sirstanleys.com</p>
+        </div>
+    </div>
+    <div class="border-t border-slate-800 pt-8 px-8 max-w-7xl mx-auto text-center md:text-left">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+            <span class="text-xs text-slate-500">© 2024 Sir Stanleys Law Firm. All rights reserved.</span>
+            <div class="flex flex-wrap justify-center gap-4 text-[10px] font-label-caps tracking-widest text-slate-500">
+                <a class="hover:text-white" href="#">Privacy</a>
+                <a class="hover:text-white" href="#">Terms</a>
+                <a class="hover:text-white" href="#">Cookies</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const header = document.getElementById('main-header');
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('menu-overlay');
+        const backToTop = document.getElementById('back-to-top');
+        const revealElements = document.querySelectorAll('.reveal');
+
+        // --- 1. Sticky Header & Back to Top logic ---
+        window.addEventListener('scroll', () => {
+            // Shrink effect
+            if (window.scrollY > 50) {
+                header.classList.add('shrunk');
+            } else {
+                header.classList.remove('shrunk');
+            }
+
+            // Back to Top button visibility
+            if (window.scrollY > 400) {
+                backToTop.classList.remove('opacity-0', 'translate-y-10');
+            } else {
+                backToTop.classList.add('opacity-0', 'translate-y-10');
+            }
+            
+            // Trigger reveals
+            revealOnScroll();
+        });
+
+        // --- 2. Mobile Menu functionality ---
+        const toggleMenu = (show) => {
+            if (show) {
+                mobileMenu.classList.add('open');
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.add('opacity-100'), 10);
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.remove('open');
+                overlay.classList.remove('opacity-100');
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+                document.body.style.overflow = '';
+            }
+        };
+
+        menuToggle.addEventListener('click', () => toggleMenu(true));
+        menuClose.addEventListener('click', () => toggleMenu(false));
+        overlay.addEventListener('click', () => toggleMenu(false));
+        
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => toggleMenu(false));
+        });
+
+        // --- 3. Scroll Reveal Logic ---
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 50) {
+                    el.classList.add('active');
+                }
+            });
+        };
+
+        // --- 4. Smooth scroll back to top ---
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Initialize scroll reveal on load
+        revealOnScroll();
+    });
+</script>
+</body>
+</html>

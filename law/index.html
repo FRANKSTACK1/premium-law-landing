@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-gradient {
+            background: linear-gradient(rgba(4, 22, 39, 0.85), rgba(4, 22, 39, 0.85)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Smooth Scroll Behavior */
+        html { scroll-behavior: smooth; }
+
+        /* Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Menu Transition */
+        #mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Navbar Scroll States */
+        nav.scrolled {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#775a19",
+                        "on-primary-container": "#8192a7",
+                        "surface-variant": "#e1e3e4",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#f0f1f2",
+                        "tertiary": "#151516",
+                        "on-secondary-container": "#785a1a",
+                        "inverse-primary": "#b7c8de",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#fed488",
+                        "error": "#ba1a1a",
+                        "on-surface": "#191c1d",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#261900",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "outline": "#74777d",
+                        "background": "#f8f9fa",
+                        "tertiary-container": "#2a2a2a",
+                        "on-background": "#191c1d",
+                        "primary-fixed": "#d2e4fb",
+                        "on-primary-fixed": "#0b1d2d",
+                        "surface-container-high": "#e7e8e9",
+                        "surface-container-low": "#f3f4f5",
+                        "surface-tint": "#4f6073",
+                        "surface-container": "#edeeef",
+                        "on-tertiary-container": "#929190",
+                        "surface": "#f8f9fa",
+                        "secondary-fixed-dim": "#e9c176",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-secondary": "#ffffff",
+                        "primary": "#041627",
+                        "on-surface-variant": "#44474c",
+                        "primary-fixed-dim": "#b7c8de",
+                        "surface-dim": "#d9dadb",
+                        "secondary-fixed": "#ffdea5",
+                        "outline-variant": "#c4c6cd",
+                        "surface-bright": "#f8f9fa",
+                        "on-primary-fixed-variant": "#38485a",
+                        "tertiary-fixed": "#e4e2e1",
+                        "primary-container": "#1a2b3c",
+                        "tertiary-fixed-dim": "#c8c6c6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "48px",
+                        "stack-md": "16px",
+                        "section-padding": "80px",
+                        "stack-sm": "8px",
+                        "gutter": "24px",
+                        "margin": "32px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Work Sans"],
+                        "headline-lg": ["Noto Serif"],
+                        "body-md": ["Work Sans"],
+                        "display-lg": ["Noto Serif"],
+                        "body-lg": ["Work Sans"],
+                        "headline-md": ["Noto Serif"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface selection:bg-secondary-container selection:text-on-secondary-container overflow-x-hidden">
+
+<!-- Navigation -->
+<nav id="main-nav" class="bg-white/95 dark:bg-slate-950/95 backdrop-blur-md text-slate-900 dark:text-slate-100 top-0 sticky border-b border-slate-200 dark:border-slate-800 z-50 transition-all duration-300">
+    <div class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
+        <div class="flex items-center gap-3 cursor-pointer active:opacity-80 transition-all">
+            <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">gavel</span>
+            <span class="text-lg md:text-xl font-serif font-bold uppercase tracking-widest text-slate-900 dark:text-slate-100">Sir Stanleys</span>
+        </div>
+        
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-8">
+            <a class="text-amber-600 dark:text-amber-500 font-semibold border-b-2 border-amber-600 font-serif text-lg tracking-tight" href="index.html">Home</a>
+            <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 font-serif text-lg tracking-tight transition-colors duration-300" href="practice-areas.html">Practice Areas</a>
+            <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 font-serif text-lg tracking-tight transition-colors duration-300" href="about.html">Attorneys</a>
+            <a class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-caps text-label-caps uppercase transition-all hover:ring-2 hover:ring-secondary hover:ring-offset-2" href="bookings.html">Book Consultation</a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="menu-toggle" class="md:hidden material-symbols-outlined text-3xl focus:outline-none" aria-label="Open menu">menu</button>
+    </div>
+</nav>
+
+<!-- Mobile Menu Sidebar -->
+<div id="menu-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] hidden opacity-0 transition-opacity duration-300"></div>
+<aside id="mobile-menu" class="fixed top-0 right-0 h-full w-[80%] max-w-xs bg-white dark:bg-slate-950 z-[70] shadow-2xl p-8 flex flex-col md:hidden">
+    <div class="flex justify-between items-center mb-10">
+        <span class="font-serif font-bold uppercase tracking-widest text-primary">Menu</span>
+        <button id="menu-close" class="material-symbols-outlined text-3xl" aria-label="Close menu">close</button>
+    </div>
+    <nav class="flex flex-col gap-6 font-serif text-xl">
+        <a class="mobile-link text-amber-600 font-bold" href="index.html">Home</a>
+        <a class="mobile-link text-slate-600 dark:text-slate-300" href="about.html">About</a>
+        <a class="mobile-link text-slate-600 dark:text-slate-300" href="practice-areas.html">Practice Areas</a>
+        <a class="mobile-link text-slate-600 dark:text-slate-300" href="attorneys.html">Attorneys</a>
+        <a href="bookings.html" class="bg-primary text-white py-4 rounded font-label-caps tracking-widest mt-4">BOOK CONSULTATION</a>
+    </nav>
+</aside>
+
+<!-- Hero Section -->
+<header class="hero-gradient relative min-h-[600px] md:min-h-[751px] flex items-center pt-20">
+    <div class="max-w-7xl mx-auto px-6 w-full py-12 md:py-section-padding">
+        <div class="max-w-2xl text-white reveal active">
+            <h1 class="font-display-lg text-4xl md:text-5xl lg:text-display-lg mb-stack-md leading-tight">Trusted Legal Representation You Can Rely On</h1>
+            <p class="font-body-lg text-base md:text-body-lg mb-stack-lg opacity-90 leading-relaxed">
+                With over 25 years of courtroom experience, Sir Stanleys Law Firm provides sophisticated legal counsel across Corporate Law, Family Disputes, and Complex Litigation.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 md:gap-gutter">
+                <button class="bg-secondary text-white px-8 py-4 rounded font-label-caps text-label-caps tracking-widest hover:brightness-110 transition-all active:scale-95" >BOOK CONSULTATION</button>
+                <button class="border border-white/40 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded font-label-caps text-label-caps tracking-widest hover:bg-white/20 transition-all active:scale-95">CONTACT US</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Heritage Section -->
+<section class="py-12 md:py-section-padding bg-surface">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center reveal">
+        <div class="relative group order-2 md:order-1">
+            <div class="absolute -inset-4 border border-secondary/20 -z-10 translate-x-2 translate-y-2 hidden md:block"></div>
+            <div class="overflow-hidden">
+                <img alt="Legal professional" class="w-full h-[350px] md:h-[500px] object-cover grayscale-[30%] group-hover:scale-105 transition-all duration-700 shadow-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRHwmkgU8fHNMlNNxDCL19Zf-zkOD0Nf2sXC8soj_gBS8B6fVL3YdAFkmeX94DeUqUSwctTOHZbSbQ8XaIfrOI-Rw05C1jELWa_vzaP-tkJCPK6V4Huk7RnP8xTbrTCp3kYzGt2jB8Kys8wPqIbFgcq1MRm2GqvAilJSGHkRxq48Y_V-s7axzM5btXf6uShtubZocYY0yUU0YMyfm5L0oMwTKKr3HW1UeI1Ou4bXXN84yZxH9RDYD7ragKZYG-auIRW0VQvRgx7zk"/>
+            </div>
+        </div>
+        <div class="space-y-stack-md order-1 md:order-2">
+            <span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest block">25+ Years of Excellence</span>
+            <h2 class="font-headline-lg text-3xl md:text-headline-lg text-primary">A Legacy of Jurisprudence and Advocacy</h2>
+            <p class="font-body-lg text-base md:text-body-lg text-on-surface-variant">Founded on principles of absolute precision and ethical rigor, Sir Stanleys has evolved into a cornerstone of the regional legal landscape.</p>
+            <div class="pt-stack-sm border-t border-outline-variant">
+                <h3 class="font-headline-md text-xl md:text-headline-md mb-2">Our Mission</h3>
+                <p class="font-body-md text-sm md:text-body-md italic text-on-surface-variant">"To provide world-class legal strategies while maintaining personalized attention."</p>
+            </div>
+            <button class="group flex items-center gap-2 font-label-caps text-label-caps text-primary hover:text-secondary transition-colors">
+                LEARN OUR FULL STORY <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Practice Areas -->
+<section class="py-12 md:py-section-padding bg-surface-container-low">
+    <div class="max-w-7xl mx-auto px-6 reveal">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 border-b border-outline-variant pb-8 gap-4">
+            <div>
+                <span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest block mb-2">Expertise</span>
+                <h2 class="font-headline-lg text-3xl md:text-headline-lg text-primary">Practice Areas</h2>
+            </div>
+            <button class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary underline underline-offset-8">VIEW ALL SERVICES</button>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+            <!-- Card -->
+            <div class="bg-white border border-outline-variant/30 hover:border-secondary hover:shadow-xl transition-all group overflow-hidden flex flex-col h-full">
+                <div class="overflow-hidden h-48">
+                    <img alt="Corporate Law" class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ6iuwXTDHJXVWm_rnDqm_1Rk-ld60VrYPz9qb2qjGLygUUQi_Och0MfIJAXFwJVJoxQCbaG-HgzobXi22uPgDB714_E6vDi18KdiLjg4GCLMBgqRsQ63R_vGeG4zvNKFgU_el3Qk8AGsX2z8onnCoxOgMLOBfjrzTScwCF7_mLfUhCaToy0L70FYkSifTHSt5CLk-AQrPsg8gaiTmK-8UYHcA4Wj5OIA6KAjZr7W-xDlBur5-GXLAvLxQPNF4JAWG1Wm5EGIoNaQ"/>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <span class="material-symbols-outlined text-secondary mb-4 text-3xl" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+                    <h3 class="font-headline-md text-xl mb-2">Corporate Law</h3>
+                    <p class="font-body-md text-sm text-on-surface-variant mb-6 flex-grow">Complex mergers, acquisitions, and strategic advisory for multinational enterprises.</p>
+                    <a class="font-label-caps text-label-caps text-secondary flex items-center gap-2 group-hover:gap-4 transition-all" href="#">READ MORE <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+                </div>
+            </div>
+            <!-- More cards... -->
+            <div class="bg-white border border-outline-variant/30 hover:border-secondary hover:shadow-xl transition-all group overflow-hidden flex flex-col h-full">
+                <div class="overflow-hidden h-48">
+                    <img alt="Family Law" class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE2WJ8JJDg92XQ3cwZ6gINNa7H4ChjrPLcBRMGipP-QYCYSChRM2oXhyT-G3is2fQvitjAARfj_mvaGINde_nmD1PtVMZ_HwulSq0RRBS7xGkk8mds6IoyBci6eArR_4rqq5iv2FHSvUW_o_awfQxR33BbEFR9Mx1RjCtsLdn56K7LNN1flB6KFrWQZ-C8NTWw-uDBdgJZfOM9T3YbRMOMCQpf2w9VkQdHAWMRsLLuFalVBBuo5bUBkPCtCA7nxvXLXOigEoI0MNE"/>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <span class="material-symbols-outlined text-secondary mb-4 text-3xl" style="font-variation-settings: 'FILL' 1;">family_restroom</span>
+                    <h3 class="font-headline-md text-xl mb-2">Family Law</h3>
+                    <p class="font-body-md text-sm text-on-surface-variant mb-6 flex-grow">Discreet representation for high-net-worth divorce and custody arrangements.</p>
+                    <a class="font-label-caps text-label-caps text-secondary flex items-center gap-2 group-hover:gap-4 transition-all" href="#">READ MORE <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+                </div>
+            </div>
+            <div class="bg-white border border-outline-variant/30 hover:border-secondary hover:shadow-xl transition-all group overflow-hidden flex flex-col h-full">
+                <div class="overflow-hidden h-48">
+                    <img alt="Criminal Defense" class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCTM8ghO9LOnW3KL6rCMdrEshN7zywsFR1OartFMFJj6hUMt0xZZpfFYCurlWJRGhE_ZKRRk7_4HeHTl-BYQCIdrCnATngXjDRfZlSWAD22vtgYwv4zdPQPg1V2eJo_MaryilQPDtZ3Ficv15LrtrFsrAxZ-H9w_QVUSNrlP6jA2FWDOKq5b001Zwbbxj8jP7xQziXlBuOvDH_5FkZudxCofyjNr8Q6lffI0D7R1yFfyRiyaQfDeKNLDPU5Cx4vmTHdGUfiXmeod0"/>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <span class="material-symbols-outlined text-secondary mb-4 text-3xl" style="font-variation-settings: 'FILL' 1;">security</span>
+                    <h3 class="font-headline-md text-xl mb-2">Criminal Defense</h3>
+                    <p class="font-body-md text-sm text-on-surface-variant mb-6 flex-grow">Aggressive white-collar defense and protection of civil liberties.</p>
+                    <a class="font-label-caps text-label-caps text-secondary flex items-center gap-2 group-hover:gap-4 transition-all" href="#">READ MORE <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+                </div>
+            </div>
+            <div class="bg-white border border-outline-variant/30 hover:border-secondary hover:shadow-xl transition-all group overflow-hidden flex flex-col h-full">
+                <div class="overflow-hidden h-48">
+                    <img alt="Real Estate Law" class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsT-T-oIKBoYT7N9QENSzNYEnpAqx-wnb4ClBt44WothToT5pXlvBHq8SoTz4cv-dPkoU7gUH-wV05u5okksIaD4CtUal8KG6ThpcDj-OszVmoEARLywfWtTZ_1CHRQDhQkH2RZXrtxh5RP-RMW8IirgLdUW0J_JIEt5tFdFfWgOtDmWoMGQZcTEr7DAYh8CLeBylieq9TEUNUVeBqu7hPimU4C5GsniGNEsUr21PD9oFjjedNxQ3rR-ptWj0Jb8OUJwrjABIhbiE"/>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <span class="material-symbols-outlined text-secondary mb-4 text-3xl" style="font-variation-settings: 'FILL' 1;">domain</span>
+                    <h3 class="font-headline-md text-xl mb-2">Real Estate</h3>
+                    <p class="font-body-md text-sm text-on-surface-variant mb-6 flex-grow">Commercial development, land use advisory, and transactions.</p>
+                    <a class="font-label-caps text-label-caps text-secondary flex items-center gap-2 group-hover:gap-4 transition-all" href="#">READ MORE <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Bento -->
+<section class="py-12 md:py-section-padding bg-surface">
+    <div class="max-w-7xl mx-auto px-6 reveal">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+            <div class="md:col-span-4 bg-primary text-white p-8 md:p-10 flex flex-col justify-between">
+                <div>
+                    <h2 class="font-headline-lg text-2xl md:text-headline-lg mb-stack-md">Why Trust Us</h2>
+                    <ul class="space-y-4 font-body-md opacity-80">
+                        <li class="flex items-start gap-4"><span class="material-symbols-outlined text-secondary">verified</span> Certified Experts</li>
+                        <li class="flex items-start gap-4"><span class="material-symbols-outlined text-secondary">verified</span> Confidentiality</li>
+                        <li class="flex items-start gap-4"><span class="material-symbols-outlined text-secondary">verified</span> Strategic Design</li>
+                    </ul>
+                </div>
+                <div class="mt-8">
+                    <span class="text-3xl font-serif text-secondary italic block">"Uncompromising advocacy."</span>
+                </div>
+            </div>
+            <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-gutter">
+                <div class="bg-surface-container p-8 border-l-4 border-secondary hover:shadow-md transition-shadow">
+                    <h4 class="font-display-lg text-3xl md:text-4xl text-secondary mb-2">$420M+</h4>
+                    <p class="font-label-caps text-[10px] text-on-surface-variant mb-2">RECOVERED</p>
+                    <p class="font-body-md text-sm">Substantial settlements secured for our corporate clients.</p>
+                </div>
+                <div class="bg-surface-container p-8 border-l-4 border-primary hover:shadow-md transition-shadow">
+                    <h4 class="font-display-lg text-3xl md:text-4xl text-primary mb-2">98%</h4>
+                    <p class="font-label-caps text-[10px] text-on-surface-variant mb-2">RETENTION</p>
+                    <p class="font-body-md text-sm">Long-term trust established with every partnership.</p>
+                </div>
+                <div class="bg-surface-container p-8 border-l-4 border-primary sm:col-span-2 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div>
+                        <h4 class="font-headline-md text-xl mb-1">Preeminent Case Results</h4>
+                        <p class="font-body-md text-sm text-on-surface-variant">Review our recent victories in state courtrooms.</p>
+                    </div>
+                    <button class="w-full md:w-auto bg-primary text-white px-8 py-4 font-label-caps text-label-caps">VIEW CASES</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="bg-primary text-white overflow-hidden reveal">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2">
+        <div class="p-8 md:p-20">
+            <h2 class="font-headline-lg text-2xl md:text-headline-lg mb-6">Initiate Your Case</h2>
+            <form class="space-y-6">
+                <div class="border-b border-white/20 pb-2 focus-within:border-secondary transition-colors">
+                    <label class="font-label-caps text-[10px] block opacity-60">FULL NAME</label>
+                    <input class="bg-transparent border-none w-full p-0 focus:ring-0 text-white" placeholder="John Doe" type="text"/>
+                </div>
+                <div class="border-b border-white/20 pb-2 focus-within:border-secondary transition-colors">
+                    <label class="font-label-caps text-[10px] block opacity-60">EMAIL ADDRESS</label>
+                    <input class="bg-transparent border-none w-full p-0 focus:ring-0 text-white" placeholder="john@example.com" type="email"/>
+                </div>
+                <div class="border-b border-white/20 pb-2 focus-within:border-secondary transition-colors">
+                    <label class="font-label-caps text-[10px] block opacity-60">MESSAGE</label>
+                    <textarea class="bg-transparent border-none w-full p-0 focus:ring-0 text-white resize-none" placeholder="How can we help?" rows="2"></textarea>
+                </div>
+                <button class="w-full bg-secondary text-white py-4 font-label-caps text-label-caps tracking-widest hover:brightness-110 active:scale-95 transition-all">SUBMIT INQUIRY</button>
+            </form>
+        </div>
+        <div class="h-[300px] md:h-auto relative">
+            <img class="w-full h-full object-cover grayscale brightness-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqAVSTqwm4-hnikYmajbDpuqVEW8r70097-3_YXq6BfcY2bCg89fZXxzRtLLtIs3GtvouR0DSvqIWVz55_dvYNjds-7sqV2j78wi7BR0G583Zem2uzJTJA-vr4CSKT263OxECGPE8DLvFYpNtpljnoVJfpC9TZIP7BtuMszW0iq3N0pknFZ0Lwhg2fc6bDnJ75zMYebS_GO4lztvIKv9yI4ZVfjE8bjl7eXU0pLKrud0OpfPVYAWa2n4TTCZ8OgnNYIGW6goLHuOQ" alt="Map"/>
+            <div class="absolute bottom-6 left-6 right-6 bg-white text-primary p-4 shadow-2xl">
+                <h4 class="font-label-caps text-[10px] text-secondary mb-1">HEADQUARTERS</h4>
+                <p class="font-body-md text-xs">1200 Prestigious Plaza, Chicago, IL 60601</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-950 text-slate-400 py-16 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 reveal">
+        <div class="space-y-6">
+            <span class="text-xl font-serif text-white font-bold uppercase tracking-widest">Sir Stanleys</span>
+            <p class="text-sm leading-relaxed">Distinguished legal counsel since 1984. Authority in every motion.</p>
+        </div>
+        <div>
+            <h4 class="text-white font-serif font-bold mb-6">Expertise</h4>
+            <ul class="space-y-3 text-sm">
+                <li><a href="#" class="hover:text-secondary transition-colors">Corporate Law</a></li>
+                <li><a href="#" class="hover:text-secondary transition-colors">Family Law</a></li>
+                <li><a href="#" class="hover:text-secondary transition-colors">Criminal Defense</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="text-white font-serif font-bold mb-6">Support</h4>
+            <ul class="space-y-3 text-sm">
+                <li><a href="#" class="hover:text-secondary transition-colors">Client Portal</a></li>
+                <li><a href="#" class="hover:text-secondary transition-colors">Disclaimer</a></li>
+                <li><a href="#" class="hover:text-secondary transition-colors">Privacy</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="text-white font-serif font-bold mb-6">Newsletter</h4>
+            <div class="flex border-b border-slate-700 pb-2">
+                <input type="email" placeholder="Email" class="bg-transparent border-none focus:ring-0 text-sm w-full"/>
+                <button class="text-secondary material-symbols-outlined">send</button>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Back to Top -->
+<button id="back-to-top" class="fixed bottom-6 right-6 bg-secondary text-white p-3 rounded-full shadow-2xl opacity-0 translate-y-10 transition-all duration-300 z-40 hover:bg-primary active:scale-90" aria-label="Back to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+</button>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const nav = document.getElementById('main-nav');
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('menu-overlay');
+        const backToTop = document.getElementById('back-to-top');
+        const reveals = document.querySelectorAll('.reveal');
+
+        // Mobile Menu Functionality
+        const toggleMenu = (isOpen) => {
+            if (isOpen) {
+                mobileMenu.classList.add('active');
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.add('opacity-100'), 10);
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('opacity-100');
+                setTimeout(() => {
+                    overlay.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }, 300);
+            }
+        };
+
+        menuToggle.addEventListener('click', () => toggleMenu(true));
+        menuClose.addEventListener('click', () => toggleMenu(false));
+        overlay.addEventListener('click', () => toggleMenu(false));
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => toggleMenu(false));
+        });
+
+        // Scroll Effects
+        const handleScroll = () => {
+            // Navbar
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+                backToTop.classList.remove('opacity-0', 'translate-y-10');
+            } else {
+                nav.classList.remove('scrolled');
+                backToTop.classList.add('opacity-0', 'translate-y-10');
+            }
+
+            // Scroll Reveal
+            reveals.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Initial check
+        handleScroll();
+    });
+</script>
+
+</body>
+</html>

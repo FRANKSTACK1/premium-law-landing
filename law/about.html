@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>About Us | Sir Stanleys Law Firm</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&amp;family=Work+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f8f9fa;
+            min-height: 100dvh;
+            overflow-x: hidden;
+        }
+        
+        /* Smooth Scrolling */
+        html { scroll-behavior: smooth; }
+
+        /* Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Menu Transitions */
+        #mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Sticky Header Enhancement */
+        header.scrolled {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Back to Top Button */
+        #back-to-top {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        #back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "secondary": "#775a19",
+                "on-primary-container": "#8192a7",
+                "surface-variant": "#e1e3e4",
+                "on-secondary-fixed-variant": "#5d4201",
+                "on-tertiary-fixed": "#1b1c1c",
+                "error-container": "#ffdad6",
+                "inverse-on-surface": "#f0f1f2",
+                "tertiary": "#151516",
+                "on-secondary-container": "#785a1a",
+                "inverse-primary": "#b7c8de",
+                "on-error-container": "#93000a",
+                "on-tertiary-fixed-variant": "#474747",
+                "on-tertiary": "#ffffff",
+                "on-error": "#ffffff",
+                "secondary-container": "#fed488",
+                "error": "#ba1a1a",
+                "on-surface": "#191c1d",
+                "on-primary": "#ffffff",
+                "on-secondary-fixed": "#261900",
+                "surface-container-lowest": "#ffffff",
+                "inverse-surface": "#2e3132",
+                "outline": "#74777d",
+                "background": "#f8f9fa",
+                "tertiary-container": "#2a2a2a",
+                "on-background": "#191c1d",
+                "primary-fixed": "#d2e4fb",
+                "on-primary-fixed": "#0b1d2d",
+                "surface-container-high": "#e7e8e9",
+                "surface-container-low": "#f3f4f5",
+                "surface-tint": "#4f6073",
+                "surface-container": "#edeeef",
+                "on-tertiary-container": "#929190",
+                "surface": "#f8f9fa",
+                "secondary-fixed-dim": "#e9c176",
+                "surface-dim": "#d9dadb",
+                "secondary-fixed": "#ffdea5",
+                "outline-variant": "#c4c6cd",
+                "surface-bright": "#f8f9fa",
+                "on-primary-fixed-variant": "#38485a",
+                "tertiary-fixed": "#e4e2e1",
+                "primary-container": "#1a2b3c",
+                "tertiary-fixed-dim": "#c8c6c6"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+              },
+              "spacing": {
+                "stack-lg": "48px",
+                "stack-md": "16px",
+                "section-padding": "80px",
+                "stack-sm": "8px",
+                "gutter": "24px",
+                "margin": "32px",
+                "container-max": "1280px"
+              },
+              "fontFamily": {
+                "label-caps": ["Work Sans"],
+                "headline-lg": ["Noto Serif"],
+                "body-md": ["Work Sans"],
+                "display-lg": ["Noto Serif"],
+                "body-lg": ["Work Sans"],
+                "headline-md": ["Noto Serif"]
+              },
+              "fontSize": {
+                "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                "headline-lg": ["clamp(24px, 5vw, 32px)", {"lineHeight": "1.2", "fontWeight": "600"}],
+                "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "display-lg": ["clamp(32px, 8vw, 48px)", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+
+<!-- Mobile Menu Overlay -->
+<div id="menu-backdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[60] hidden opacity-0 transition-opacity duration-300"></div>
+<div id="mobile-menu" class="fixed top-0 right-0 h-full w-[280px] bg-white z-[70] shadow-2xl p-8 flex flex-col">
+    <div class="flex justify-end mb-8">
+        <button id="menu-close" aria-label="Close menu" class="material-symbols-outlined text-slate-900 text-3xl">close</button>
+    </div>
+    <nav class="flex flex-col gap-6 text-xl font-serif">
+        <a href="index.html" class="mobile-nav-link text-slate-900 hover:text-amber-600 transition-colors">Home</a>
+        <a href="about.html" class="mobile-nav-link text-amber-600 font-bold">About</a>
+        <a href="practice-areas.html" class="mobile-nav-link text-slate-900 hover:text-amber-600 transition-colors">Practice Areas</a>
+        <a href="attorneys.html" class="mobile-nav-link text-slate-900 hover:text-amber-600 transition-colors">Attorneys</a>
+    </nav>
+    <a href="bookings.html" class="mt-12 bg-primary text-on-primary px-6 py-4 font-label-caps text-label-caps uppercase tracking-widest">
+        Book Consultation
+    </a>
+</div>
+
+<!-- TopAppBar -->
+<header id="main-header" class="bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm sticky top-0 z-50 transition-all duration-300">
+    <div class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
+        <div class="flex items-center gap-3 cursor-pointer active:opacity-80 transition-all">
+            <span class="material-symbols-outlined text-slate-900 text-2xl md:text-3xl" style="font-variation-settings: 'FILL' 1;">gavel</span>
+            <span class="text-sm md:text-xl font-serif font-bold uppercase tracking-widest text-slate-900 whitespace-nowrap">Sir Stanleys Law Firm</span>
+        </div>
+        
+        <nav class="hidden md:flex items-center gap-8">
+            <a class="text-slate-600 font-medium hover:text-slate-900 font-serif text-lg tracking-tight transition-colors duration-300" href="#">Home</a>
+            <a class="text-amber-600 font-semibold border-b-2 border-amber-600 font-serif text-lg tracking-tight" href="#">About</a>
+            <a class="text-slate-600 font-medium hover:text-slate-900 font-serif text-lg tracking-tight transition-colors duration-300" href="#">Practice Areas</a>
+            <a class="text-slate-600 font-medium hover:text-slate-900 font-serif text-lg tracking-tight transition-colors duration-300" href="#">Attorneys</a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+            <a href="bookings.html" class="hidden lg:block bg-primary text-on-primary px-6 py-2 rounded-none font-label-caps text-label-caps hover:bg-secondary transition-all">
+                Book Consultation
+            </a>
+            <button id="menu-toggle" aria-label="Open menu" class="md:hidden material-symbols-outlined text-slate-900 text-3xl">menu</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="relative h-[60vh] md:h-[530px] flex items-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img class="w-full h-full object-cover grayscale opacity-40 transition-transform duration-[20s] scale-110" id="hero-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvbFX_cf9tcf5RXM5vfh9gAPslTY8dpzghHEqk79xwQkpSPoC69IVQimcf0dyWizSBzQvLLgCrKXQ-7jjpVcxaOeffNt_eya1SAhtfVdDcSRlcGHq05QNBKl6aHrGBddOOUh2C7UqBW8bu3Ru6Iw1JVqAnjTjANaAyTkXVHOBqOPmTuCOIaiw1wAh1sKAE_GNBUroatdPmn6sTJVtF1ib6DCsFk_l42I8x3K70_BK--C4dsCzCWD7qWc8NTXrOtry_Z8XGculfxZg" alt="Law Library"/>
+            <div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/70 to-transparent"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+            <div class="max-w-2xl reveal active">
+                <span class="font-label-caps text-label-caps text-secondary-container mb-4 block">ESTABLISHED 1924</span>
+                <h1 class="font-display-lg text-display-lg text-on-primary mb-6">A Century of Legal Excellence and Unwavering Integrity</h1>
+                <p class="font-body-lg text-body-lg text-on-primary-container leading-relaxed">For over one hundred years, Sir Stanleys has stood as a bastion of justice, navigating the complex landscapes of corporate and civil law.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- History & Philosophy -->
+    <section class="py-12 md:py-section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div class="space-y-stack-md reveal">
+                <h2 class="font-headline-lg text-headline-lg text-primary">The Architecture of Justice</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant">Founded in the heart of the financial district, our firm was built on the principle that every client deserves absolute discretion and relentless advocacy.</p>
+                <div class="pt-8 grid grid-cols-2 gap-4 md:gap-8 border-t border-surface-variant">
+                    <div>
+                        <span class="font-display-lg text-display-lg text-secondary block">100+</span>
+                        <span class="font-label-caps text-label-caps text-on-surface-variant">YEARS OF HISTORY</span>
+                    </div>
+                    <div>
+                        <span class="font-display-lg text-display-lg text-secondary block">450</span>
+                        <span class="font-label-caps text-label-caps text-on-surface-variant">EXPERT ATTORNEYS</span>
+                    </div>
+                </div>
+            </div>
+            <div class="relative group reveal">
+                <div class="absolute -inset-4 border border-secondary/20 hidden md:block transition-transform group-hover:translate-x-2 group-hover:translate-y-2"></div>
+                <img class="relative z-10 w-full h-[300px] md:h-[500px] object-cover transition-transform duration-500 group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-04QxyAJSqkQd2TfL04S2FQrm3bClFSUVFTRDfHb_fjGvxoStXCJxt1cNMF-Vl6f54_gnM3KsUnKmZQdk1A3CkE2JSH1VajF_v5MFL2iWJEE8NxzL_0quauCiNwe1dNa3HlsLDytUYM89PJJ3onbklJ2Xpn2YqlKmUzeG9xp_9ZK8XU0-U_hqSL2-GMqpQlSWo_qpBYMfGhwrwEupfEK_zJMXb4Hoj-2PYE1w_X-YFPQf7RBqxcM5_-DTKzzJspC-xAxCrlPN5lU" alt="Gavel"/>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission, Vision, Values -->
+    <section class="py-12 md:py-section-padding bg-background">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-gutter">
+                <div class="bg-white p-8 md:p-10 border border-surface-variant hover:shadow-xl transition-all duration-300 reveal">
+                    <span class="material-symbols-outlined text-secondary text-4xl mb-6">flag</span>
+                    <h3 class="font-headline-md text-headline-md text-primary mb-4">Our Mission</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">To provide sophisticated legal counsel that empowers our clients to navigate high-stakes environments with confidence.</p>
+                </div>
+                <div class="bg-primary text-on-primary p-8 md:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 reveal">
+                    <span class="material-symbols-outlined text-secondary-container text-4xl mb-6">visibility</span>
+                    <h3 class="font-headline-md text-headline-md mb-4">Our Vision</h3>
+                    <p class="font-body-md text-body-md text-on-primary-container">To define the standard of excellence for international law, blending traditional heritage with advancements.</p>
+                </div>
+                <div class="bg-white p-8 md:p-10 border border-surface-variant hover:shadow-xl transition-all duration-300 reveal">
+                    <span class="material-symbols-outlined text-secondary text-4xl mb-6">verified_user</span>
+                    <h3 class="font-headline-md text-headline-md text-primary mb-4">Our Values</h3>
+                    <ul class="space-y-4 font-body-md text-body-md text-on-surface-variant">
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-secondary rounded-full"></span> Absolute Integrity</li>
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-secondary rounded-full"></span> Pursuit of Truth</li>
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-secondary rounded-full"></span> Client Precision</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership -->
+    <section class="py-12 md:py-section-padding bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6 reveal">
+                <div class="max-w-xl">
+                    <span class="font-label-caps text-label-caps text-secondary mb-2 block">LEADERSHIP</span>
+                    <h2 class="font-headline-lg text-headline-lg text-primary">Guided by Industry Sovereigns</h2>
+                </div>
+                <button class="font-label-caps text-label-caps text-primary border-b border-primary hover:text-secondary hover:border-secondary transition-all pb-1 uppercase">VIEW FULL TEAM</button>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-gutter">
+                <!-- Leader 1 -->
+                <div class="group cursor-pointer reveal">
+                    <div class="overflow-hidden mb-6 h-80 lg:h-96">
+                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNS0RAuKalee4eifbFlN-Nr55qc8yBcYb-w-JVkrY2BcruwV3os-br1s1m1I6A67cmOmTJvaCN0O_J1knyTl5BkoVIBiAyVsIR4CJ7cTNkWEHxO8W3zX4cEPKQwbWN5VSdIpGWXXIDSGZYYoq7B0BtPTgrXGMyP2zo2RZ-r8PVkvyBT1_y0NqRzvRMhvGl97cafecj7Vv9m5WSTsdiE-q6x7QEoeyxKg0eC6TwQdWw296zHRGyJsjcPv1t0Bq2HwRdKdQiLGUBB6Q" alt="Arthur Stanley III"/>
+                    </div>
+                    <h4 class="font-headline-md text-headline-md text-primary mb-1">Arthur Stanley III</h4>
+                    <span class="font-label-caps text-label-caps text-on-surface-variant">MANAGING PARTNER</span>
+                </div>
+                <!-- Leader 2 -->
+                <div class="group cursor-pointer reveal">
+                    <div class="overflow-hidden mb-6 h-80 lg:h-96">
+                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeMbPHNgzJVcuIeGQfHQ7xYt3Ehq-Bkxpbna36LaQaoYY0Dj0RrwcHZl9_eOWDhNyvunSYKxiSvNunsWUhWlWswPAyk0HSGHri0rOdi9CFXp8EM3zDdHNIx1uokS8CjJYFH04vlQqWaxGTI_ox0TvoMgxOXve-En435aCCNkVIj9VFMoyPVEil1hYSfV77HLznrvK3z4HVOIZhY3Ub_04FlG1_4Qn_ig23LHHcQqew4g6005HmlHqBygHqNmtCUt7AlUIVjWJSxSg" alt="Elena Sterling"/>
+                    </div>
+                    <h4 class="font-headline-md text-headline-md text-primary mb-1">Dr. Elena Sterling</h4>
+                    <span class="font-label-caps text-label-caps text-on-surface-variant">CHIEF LITIGATOR</span>
+                </div>
+                <!-- Add other leaders similarly with .reveal -->
+                 <div class="group cursor-pointer reveal">
+                    <div class="overflow-hidden mb-6 h-80 lg:h-96">
+                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEEA4ulOcdeN3siW4DbqxV8z_qM7hT6E7zAIbkfUG5l8AAlSL_MWI3E-ZNomVlDExyPj-th4dL1SliQSznAXpuBqzVX2m5rBU2NQZdhYl0DnajCvFCBnGh07tYarRxYHwUYLyBlVh6XzxcYBtX_BhbBCkNKRYm52bro44vU2kfBC36t_izAZxS0i_o1yCb7Fqq7qX2NVJ9ViuXh8yWCINvSaZtIci5HUxBk80l_dG26dApTk_3dBcDFkAMW3MqHJRvGHXU7tEmxEg" alt="Marcus Thorne"/>
+                    </div>
+                    <h4 class="font-headline-md text-headline-md text-primary mb-1">Marcus Thorne</h4>
+                    <span class="font-label-caps text-label-caps text-on-surface-variant">CORPORATE ADVISORY</span>
+                </div>
+                <div class="group cursor-pointer reveal">
+                    <div class="overflow-hidden mb-6 h-80 lg:h-96">
+                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP5C6kyGoKVyKiEG6LaECTuZmi98xIIdeatmHDz0H3jRsIOrIrbyeAYBuKGhuCcLbANFU_FdkwpPuHk9DXS9-2-X0EBVldodrf4HhLbq_Wy4t24bQMuz5F_Nhsoe0YS17vFTyJXrLc551JV6t4DxuBq643KyR9VxqKFfniFfR9usasBwg3oAvFd5Ff-ktq3IPz-ytdIPzJ9Mb6eRyGMAqej5KaPmHXAZ41hpqEY-U1hVtOAM3O3dRL-nESP24AYznN71GxeImCVf8" alt="Vivienne DuPont"/>
+                    </div>
+                    <h4 class="font-headline-md text-headline-md text-primary mb-1">Vivienne DuPont</h4>
+                    <span class="font-label-caps text-label-caps text-on-surface-variant">GLOBAL STRATEGY</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accolades -->
+    <section class="py-12 md:py-section-padding bg-background">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter">
+                <div class="lg:col-span-4 space-y-6 md:space-y-stack-md reveal">
+                    <span class="font-label-caps text-label-caps text-secondary mb-2 block">ACCOLADES</span>
+                    <h2 class="font-headline-lg text-headline-lg text-primary">Recognized Excellence</h2>
+                    <div class="space-y-6 pt-6">
+                        <div class="flex items-center gap-4 pb-4 border-b border-surface-variant">
+                            <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                            <span class="font-body-md text-body-md text-primary font-medium">Top Tier Law Firm - Global Legal 500</span>
+                        </div>
+                        <div class="flex items-center gap-4 pb-4 border-b border-surface-variant">
+                            <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+                            <span class="font-body-md text-body-md text-primary font-medium">Excellence in Corporate Litigation</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="h-64 sm:h-full reveal">
+                        <img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPB5kpiKC4_LDH0jjyCqJ_SONCsc5rsz8gXiq3tfW_DV7JZqVju7mF1yvYibjBIa3vRsy5WuSuBtViIjZKnZU63wTj1WuL8PGZntZaBs_sb8ssP40RXYyUr-E0dK_U8mmxTxeZ6idnXtuMX5wgxWq1Prhivp3-ijBXxl1huJZl7fcNm3ogCOani5_jvT5uPDRasoQnHBTWM_6rQFo6h4XNRnGdzLNKK8erOuvZvb4Rk-L0Zf_QHSE8hG-ETwT09YtKWolsABttmdQ" alt="Office"/>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="h-48 md:h-64 reveal"><img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjhqYPXTruPnq9SKPLVzO1O97I0YjDKMALkebL5ygNBGojUYg1bYG6GngknddoBee0CCH-LpSXe0-3p1qsoqVnABxAI4TAVSh8F7_RRdnxIvoMtlpmDcsKmr0jt-8VXHbG7Rrad8OndvlGe89r2WzD1nZ2CpWPX9yj90U2nuJyE7qVr5TbZUFBNZ1OEKxce5dk3F2W-PIQV9nMelY5-ZMj1CVsla16y9k_YTLzxIBiCCbQt6kbHQqml3UvS3zHumhmdYNg2s1mghA" alt="Meeting Room"/></div>
+                        <div class="h-48 md:h-64 reveal"><img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOA8BqJsVoElu3BPPpVTPXmqAZWhyd3YJpcb3ZOuWy_9mi-wDHiGRghylwwAVTnxRTDaLAeq5RsQPNOiWiNHSumd2nqyESV-bUn5MAuE0SH_K0IynteOKY3u-WzMGB14Z5KAWsIsppvzrPriXyqmT_EfuWCqyG3OndK0AU6kW-W8OVFodFbkkQU9oIt08VPbxjbxrYzIYlBy8DFEHa91jNEtT9fYMwNpJq7eT-cITtzsQf7iXGSxJTM3EuTHZjez_sjsc5upS0tR8" alt="Staircase"/></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-8 right-8 z-[40] bg-primary text-on-primary w-12 h-12 flex items-center justify-center shadow-lg hover:bg-secondary transition-all">
+    <span class="material-symbols-outlined">arrow_upward</span>
+</button>
+
+
+<!-- Footer -->
+<footer class="bg-slate-950 dark:bg-black text-slate-300 dark:text-slate-500 pt-16 pb-8 border-t border-amber-900/30 w-full">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-8 max-w-7xl mx-auto">
+<div class="col-span-1 md:col-span-1">
+<span class="text-2xl font-serif text-white tracking-tighter block mb-6">Sir Stanleys</span>
+<p class="font-sans text-sm leading-relaxed mb-6">Providing a century of elite legal advocacy and precision counsel to global leaders and industry pioneers.</p>
+</div>
+<div>
+<h5 class="text-white font-serif mb-6">Navigation</h5>
+<ul class="space-y-4 font-sans text-sm leading-relaxed">
+<li><a class="text-slate-400 hover:text-white transition-colors cursor-default underline-offset-4 hover:underline" href="firm-history.html">Firm History</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors cursor-default underline-offset-4 hover:underline" href="practice-areas.html">Practice Areas</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors cursor-default underline-offset-4 hover:underline" href="attorneys.html">Attorneys</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors cursor-default underline-offset-4 hover:underline" href="contact.html">Contact Us</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-white font-serif mb-6">Contact</h5>
+<address class="not-italic space-y-4 font-sans text-sm leading-relaxed">
+<p>888 Lexingon Avenue<br/>New York, NY 10022</p>
+<p>+1 (212) 555-0198</p>
+<p>contact@sirstanleys.com</p>
+</address>
+</div>
+<div>
+<h5 class="text-white font-serif mb-6">Legal</h5>
+<ul class="space-y-4 font-sans text-sm leading-relaxed">
+<li><a class="text-slate-400 hover:text-white transition-colors cursor-default underline-offset-4 hover:underline" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors cursor-default underline-offset-4 hover:underline" href="#">Terms of Service</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors cursor-default underline-offset-4 hover:underline" href="#">Disclaimer</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 mt-16 pt-8 border-t border-slate-800 text-center">
+<p class="font-sans text-sm leading-relaxed">© 2024 Sir Stanleys Law Firm. All rights reserved.</p>
+</div>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- 1. Header & Back to Top Logic ---
+        const header = document.getElementById('main-header');
+        const backToTop = document.getElementById('back-to-top');
+        const heroImg = document.getElementById('hero-img');
+
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY;
+            
+            // Header Sticky Behavior
+            if (scrollPos > 50) {
+                header.classList.add('scrolled', 'shadow-md');
+            } else {
+                header.classList.remove('scrolled', 'shadow-md');
+            }
+
+            // Back to Top Visibility
+            if (scrollPos > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+
+            // Parallax Hero Effect
+            if (heroImg) {
+                heroImg.style.transform = `translateY(${scrollPos * 0.1}px) scale(1.1)`;
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // --- 2. Mobile Menu Logic ---
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const backdrop = document.getElementById('menu-backdrop');
+        const navLinks = document.querySelectorAll('.mobile-nav-link');
+
+        const toggleMenu = (open) => {
+            if (open) {
+                mobileMenu.classList.add('open');
+                backdrop.classList.remove('hidden');
+                setTimeout(() => backdrop.classList.add('opacity-100'), 10);
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.remove('open');
+                backdrop.classList.remove('opacity-100');
+                setTimeout(() => backdrop.classList.add('hidden'), 300);
+                document.body.style.overflow = 'auto';
+            }
+        };
+
+        menuToggle.addEventListener('click', () => toggleMenu(true));
+        menuClose.addEventListener('click', () => toggleMenu(false));
+        backdrop.addEventListener('click', () => toggleMenu(false));
+        navLinks.forEach(link => link.addEventListener('click', () => toggleMenu(false)));
+
+        // --- 3. Scroll Reveal Animation ---
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Once animated, stop observing
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    });
+</script>
+</body>
+</html>
