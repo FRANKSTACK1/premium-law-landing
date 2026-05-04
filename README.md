@@ -5,7 +5,7 @@ A sophisticated, fully responsive landing page designed for a high-end legal pra
 ![Mobile Responsive](https://img.shields.io/badge/Responsive-Yes-gold)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 ![Stack](https://img.shields.io/badge/Stack-Tailwind_|_Vanilla_JS-black) 
-[![Portfolio](https://img.shields.io/badge/Portfolio-Visit%20My%20Site-blue?style=for-the-badge&logo=googlechrome&logoColor=white)](https://frankstack.com.ng)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Visit%20My%20Site-blue?style=for-the-badge&logo=googlechrome&logoColor=white)](https://frankstack.com.ng) 
 
 ## ✨ Key Features
 
